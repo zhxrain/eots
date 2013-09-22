@@ -36,12 +36,12 @@ return array(
 
   // application components
   'components'=>array(
-    'user'=>array(
-      // enable cookie-based authentication
-      'allowAutoLogin'=>true,
-      'class' => 'application.modules.user.components.YumWebUser', 
-      'loginUrl' => array('//user/user/login'), 
-    ),
+    //'user'=>array(
+      //// enable cookie-based authentication
+      //'allowAutoLogin'=>true,
+      //'class' => 'application.modules.user.components.YumWebUser', 
+      //'loginUrl' => array('//user/user/login'), 
+    //),
     // uncomment the following to enable URLs in path-format
                 /*
                 'urlManager'=>array(
