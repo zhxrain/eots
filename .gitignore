@@ -1,5 +1,4 @@
 .gitignore
-assets/*
 protected/runtime/*
 themes/classic/views/*
 protected/data/eots.db
