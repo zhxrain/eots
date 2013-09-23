@@ -36,6 +36,10 @@ return array(
 
   // application components
   'components'=>array(
+    'authManager'=>array(
+      'class' => 'CDbAuthManager',
+      'connectionID' => 'ID',
+    ),
     //'user'=>array(
       //// enable cookie-based authentication
       //'allowAutoLogin'=>true,
