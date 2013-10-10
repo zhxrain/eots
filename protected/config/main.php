@@ -41,6 +41,13 @@ return array(
       'allowAutoLogin'=>true,
       'loginUrl' => array('//user/user/login'), 
     ),
+    'authManager'=>array(
+      'class' => 'CDbAuthManager',
+      'connectionID' => 'db',
+      'itemTable' => 'auth_item',
+      'itemChildTable' => 'auth_item_child',
+      'assignmentTable' => 'auth_assignment'
+    ),
     // uncomment the following to enable URLs in path-format
                 /*
                 'urlManager'=>array(
