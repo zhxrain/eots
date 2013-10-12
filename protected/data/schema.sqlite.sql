@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS auth_item(
 --项目层次表，存储操作、任务、角色之间的层次关系，Yii默认表名：AuthItemChild
 CREATE TABLE IF NOT EXISTS auth_item_child(
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    itemname VARCHAR(20) NOT NULL, --COMMENT "项目名"
-    childname VARCHAR(20) NOT NULL --COMMENT "项目名"
+    parent VARCHAR(20) NOT NULL, --COMMENT "项目名"
+    child VARCHAR(20) NOT NULL --COMMENT "项目名"
 );
 --存储角色与用户之间的关系，Yii默认表名：AuthAssignment
 CREATE TABLE IF NOT EXISTS auth_assignment(
@@ -30,7 +30,10 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(25) NOT NULL,
     email VARCHAR(128) NOT NULL
 );
-
+INSERT INTO auth_item (name, type) VALUES ('admin', 2);
+INSERT INTO auth_item (name, type, description) VALUES ('showRoles', 0, 'show roles');
+INSERT INTO auth_item_child (id, parent, child) VALUES (1, 'admin', 'showRoles');
+INSERT INTO auth_assignment (id, userid, itemname) VALUES (1, 'admin', 'admin');
 INSERT INTO users (username, password, email) VALUES ('admin', 'admin', 'admin@example.com');
 INSERT INTO users (username, password, email) VALUES ('demo', 'demo', 'demo@example.com');
 INSERT INTO users (username, password, email) VALUES ('test1', 'test1', 'test1@example.com');
