@@ -41,7 +41,7 @@ class RoleController extends Controller
       ));
       return;
     }
-    $this->render('error');
+    $this->render("/site/authError");
   }
 }
 
