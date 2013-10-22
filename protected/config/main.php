@@ -39,8 +39,14 @@ return array(
     'user'=>array(
       // enable cookie-based authentication
       'allowAutoLogin'=>true,
-      'class' => 'application.modules.user.components.YumWebUser', 
       'loginUrl' => array('//user/user/login'), 
+    ),
+    'authManager'=>array(
+      'class' => 'CDbAuthManager',
+      'connectionID' => 'db',
+      'itemTable' => 'auth_item',
+      'itemChildTable' => 'auth_item_child',
+      'assignmentTable' => 'auth_assignment'
     ),
     // uncomment the following to enable URLs in path-format
                 /*
