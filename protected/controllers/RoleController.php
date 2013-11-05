@@ -21,12 +21,12 @@ class RoleController extends Controller
     //$role->addChild('showRoles');
     //$auth->assign('gen','admin');
     if(Yii::app()->user->checkAccess('showRoles')){
-      $auth=Yii::app()->authManager;
-      $op = $auth->getOperations();
-      if(!isset($op['showRoles'])){
-        $auth->createOperation('showRoles','show roles');
-        $auth->save();
-      }
+      //$auth=Yii::app()->authManager;
+      //$op = $auth->getOperations();
+      //if(!isset($op['showRoles'])){
+      //  $auth->createOperation('showRoles','show roles');
+      //  $auth->save();
+      //}
       $criteria=new CDbCriteria;
       $criteria->addCondition("type=2"); 
       $dataProvider =new CActiveDataProvider('Role', array(
