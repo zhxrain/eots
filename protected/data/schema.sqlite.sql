@@ -30,10 +30,12 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(25) NOT NULL,
     email VARCHAR(128) NOT NULL
 );
-INSERT INTO auth_item (name, type) VALUES ('admin', 2);
+INSERT INTO auth_item (name, type) VALUES ('Administrators', 2);
 INSERT INTO auth_item (name, type, description) VALUES ('showRoles', 0, 'show roles');
-INSERT INTO auth_item_child (id, parent, child) VALUES (1, 'admin', 'showRoles');
-INSERT INTO auth_assignment (id, userid, itemname) VALUES (1, 'admin', 'admin');
+INSERT INTO auth_item (name, type, description) VALUES ('showUsers', 0, 'show users');
+INSERT INTO auth_item_child (id, parent, child) VALUES (1, 'Administrators', 'showRoles');
+INSERT INTO auth_item_child (id, parent, child) VALUES (2, 'Administrators', 'showUsers');
+INSERT INTO auth_assignment (id, userid, itemname) VALUES (1, 'admin', 'Administrators');
 INSERT INTO users (username, password, email) VALUES ('admin', 'admin', 'admin@example.com');
 INSERT INTO users (username, password, email) VALUES ('demo', 'demo', 'demo@example.com');
 INSERT INTO users (username, password, email) VALUES ('test1', 'test1', 'test1@example.com');
