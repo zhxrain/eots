@@ -32,6 +32,13 @@ class AccountController extends Controller
     }
     $this->render("/site/authError");
   }
+
+  public function actionDelete()
+  {
+     $id = $_GET['id'];
+     $user=User::model()->findByPk($id);
+     $user->delete();
+  }
 }
 
 ?>
