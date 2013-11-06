@@ -17,8 +17,10 @@ curl -sS https://getcomposer.org/installer | php
 ```
 Add $HOME/bin to $PATH
 
-##### download 
-
+```bash
+cd protected
+composer.phar install -vvv
+```
 
 ### init database
 
@@ -26,7 +28,6 @@ Add $HOME/bin to $PATH
 cd protected/data
 sqlite3 eots.db < schema.sqlite.sql
 ```
-
 
 ### start server
 
