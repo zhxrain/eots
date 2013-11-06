@@ -1,25 +1,19 @@
-<head>
+<h2> Home Page</h2>
+<!--head>
 
-	<!-- Basics -->
 	
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<title>Login</title>
 
-	<!-- CSS -->
-	
 	<link rel="stylesheet" href="../../../css/reset.css">
 	<link rel="stylesheet" href="../../../css/animate.css">
 	<link rel="stylesheet" href="../../../css/styles.css">
 	
 </head>
 
-	<!-- Main HTML -->
-	
 <body>
-	
-	<!-- Begin Page Content -->
 	
 	<div id="container">
 		
@@ -47,9 +41,6 @@
 		
 	</div>
 	
-	
-	<!-- End Page Content -->
-	
 </body>
 
-</html>
+</html-->
