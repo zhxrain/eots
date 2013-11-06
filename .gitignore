@@ -1,2 +1,3 @@
-.gitignore
-themes/classic/views/*
+assets/
+protected/runtime/
+themes/classic/views/
