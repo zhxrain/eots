@@ -39,7 +39,7 @@ return array(
     'user'=>array(
       // enable cookie-based authentication
       'allowAutoLogin'=>true,
-      'loginUrl' => array('//user/user/login'), 
+      'loginUrl' => array('site/login'), 
     ),
     'authManager'=>array(
       'class' => 'CDbAuthManager',
@@ -107,4 +107,9 @@ return array(
     'adminEmail'=>'webmaster@example.com',
   ),
   'language'=>'zh_cn', 
+  'behaviors' => array(
+    'onBeginRequest' => array(
+        'class' => 'application.components.RequireLogin'
+    )
+  ),
 );
