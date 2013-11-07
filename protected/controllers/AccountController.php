@@ -13,6 +13,7 @@ class AccountController extends Controller
 	 */
 	public function actionIndex()
 	{
+                $this->layout = 'page';
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
     if(Yii::app()->user->checkAccess('showUsers')){
