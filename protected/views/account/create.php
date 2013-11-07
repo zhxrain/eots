@@ -34,5 +34,8 @@
 
 <div class="row buttons">
   <?php echo CHtml::submitButton('提交'); ?>
+  <?php echo CHtml::button('返回',array('submit'=>array('account/index'))); ?>
 </div>
+
+
 <?php $this->endWidget(); ?>

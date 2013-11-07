@@ -43,6 +43,7 @@ class AccountController extends Controller
 
   public function actionCreate()
   {
+    $this->layout = 'page';
     $user= new User('create');
     if(isset($_POST['User']))
     {
