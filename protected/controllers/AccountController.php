@@ -35,9 +35,21 @@ class AccountController extends Controller
 
   public function actionDelete()
   {
-     $id = $_GET['id'];
-     $user=User::model()->findByPk($id);
-     $user->delete();
+    $id = $_GET['id'];
+    $user=User::model()->findByPk($id);
+    $user->delete();
+  }
+
+  public function actionCreate()
+  {
+    $user= new User('create');
+    if(isset($_POST['User']))
+    {
+      $user->attributes = $_POST['User'];
+      if($user->validate() && $user->save())
+        $this->redirect(array("/account/index"));
+    }
+    $this->render("/account/create", array('model'=>$user));
   }
 }
 

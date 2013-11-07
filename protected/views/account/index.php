@@ -12,3 +12,14 @@
   )
 ));
 ?>
+
+<!--button onclick=location.href="<?php echo Yii::app()->createUrl('account/create'); ?>">添加用户</button-->
+
+<?php $this->widget('zii.widgets.jui.CJuiButton', array(
+  'buttonType'=>'link',
+  'name'=>'createUser',
+  'caption'=>'添加用户',
+  //'options'=>array('icons'=>'js:{secondary:"ui-icon-extlink"}'),
+  'url'=>array('account/create'),
+));
+?>
