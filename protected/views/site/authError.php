@@ -8,8 +8,5 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h2>Error, You are not authorized to view this page! <?php echo $code; ?></h2>
+<h2>Error, You are not authorized to view this page!</h2>
 
-<div class="error">
-<?php echo CHtml::encode($message); ?>
-</div>
