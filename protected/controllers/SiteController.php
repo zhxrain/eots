@@ -32,6 +32,15 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+	public function actionDashboard()
+	{
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+          $this->layout = 'page';
+		$this->render('dashboard');
+	}
+
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
@@ -95,6 +104,7 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
+    $this->layout = 'login';
 		$this->render('login',array('model'=>$model));
 	}
 

@@ -13,6 +13,7 @@ class AccountController extends Controller
 	 */
 	public function actionIndex()
 	{
+                $this->layout = 'page';
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
     if(Yii::app()->user->checkAccess('showUsers')){
@@ -35,9 +36,22 @@ class AccountController extends Controller
 
   public function actionDelete()
   {
-     $id = $_GET['id'];
-     $user=User::model()->findByPk($id);
-     $user->delete();
+    $id = $_GET['id'];
+    $user=User::model()->findByPk($id);
+    $user->delete();
+  }
+
+  public function actionCreate()
+  {
+    $this->layout = 'page';
+    $user= new User('create');
+    if(isset($_POST['User']))
+    {
+      $user->attributes = $_POST['User'];
+      if($user->validate() && $user->save())
+        $this->redirect(array("/account/index"));
+    }
+    $this->render("/account/create", array('model'=>$user));
   }
 }
 
