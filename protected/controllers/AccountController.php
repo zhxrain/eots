@@ -34,6 +34,13 @@ class AccountController extends Controller
     $this->render("/site/authError");
   }
 
+  public function actionView($id)
+  {
+    $this->layout = 'page';
+    $user=User::model()->findByPk($id);
+    $this->render('detail',array('model'=>$user));
+  }
+
   public function actionDelete()
   {
     $id = $_GET['id'];
@@ -52,6 +59,20 @@ class AccountController extends Controller
         $this->redirect(array("/account/index"));
     }
     $this->render("/account/create", array('model'=>$user));
+  }
+
+  public function actionUpdate($id)
+  {
+    $this->layout = 'page';
+    $user=User::model()->findByPk($id);
+    if(isset($_POST['User']))
+    {
+      $user->attributes = $_POST['User'];
+      if($user->validate() && $user->save())
+        $this->redirect(array("/account/index"));
+    }
+    $user->repeatpassword = $user->password;
+    $this->render("/account/update", array('model'=>$user));
   }
 }
 
