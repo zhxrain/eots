@@ -28,17 +28,20 @@ html, body {
 	color: #444;
 	-webkit-font-smoothing: antialiased;
 	background: #f0f0f0;
-	
+        padding: 0;
+        margin: 0;
+        overflow: auto; /* when page gets too small */
 }
 
 #container {
-	position: fixed;
 	width: 100%;
-	top: 50%;
-	left: 50%;
-	margin-top: -140px;
-	margin-left: -170px;
+        height: 100%;
+        margin: 0 auth;
 	background: #fff;
+        min-width:700px;
+        _width:700px; /* min-width for IE6 */boot/
+        margin-top: 5px;
+        margin-bottom: 5px;
 	border-radius: 3px;
 	border: 1px solid #ccc;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
