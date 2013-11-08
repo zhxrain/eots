@@ -45,7 +45,7 @@
 
                 var uri = li.attr('uri');
                 if(uri)
-                  $("#frame").attr("src", "/index.php?r=" + uri);
+                  $("#frame").attr("src", "index.php?r=" + uri);
               },
               onToggleBefore: function(submenu, opening) {
                 var idx = submenu.attr('data-index');
@@ -76,7 +76,7 @@
   <div class="pane ui-layout-north">Main Toolbar
     <div style="text-align:right;">
       <?php if(!Yii::app()->user->isGuest) { ?>
-      <?php echo Yii::app()->user->name; ?>(<a href="/index.php?r=site/logout">注销</a>)
+      <?php echo Yii::app()->user->name; ?>(<a href="index.php?r=site/logout">注销</a>)
       <?php } ?>
     </div>
   </div>
@@ -107,7 +107,7 @@
   </div>
   <div class="pane ui-layout-center">
     <div class="container" id="page">
-      <iframe id="frame" src="/index.php?r=site/dashboard" width="100%" height="100%"></iframe>
+      <iframe id="frame" src="index.php?r=site/dashboard" width="100%" height="100%"></iframe>
     </div>
   </div>
   <div class="pane ui-layout-south">
