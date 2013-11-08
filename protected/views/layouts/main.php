@@ -60,7 +60,7 @@
             });
             $('#container').layout({
                 closable: true
-              , resizeable: true
+              , resizable: true
               , north__resizable: false
               , north__spacing_open: 0
               , south__resizable: false
