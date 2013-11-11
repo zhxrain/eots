@@ -2,4 +2,5 @@ assets/
 protected/runtime/
 protected/composer.lock
 protected/vendor/
+protected/db/*.db
 themes/classic/views/

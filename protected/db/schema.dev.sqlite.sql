@@ -47,3 +47,14 @@ INSERT INTO users (username, password, email) VALUES ('test6', 'test6', 'test6@e
 INSERT INTO users (username, password, email) VALUES ('test7', 'test7', 'test7@example.com');
 INSERT INTO users (username, password, email) VALUES ('test8', 'test8', 'test8@example.com');
 INSERT INTO users (username, password, email) VALUES ('test9', 'test9', 'test9@example.com');
+
+--菜单项表
+CREATE TABLE IF NOT EXISTS menu_item(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    root INTEGER DEFAULT NULL,
+    lft INTEGER NOT NULL,
+    rgt INTEGER NOT NULL,
+    level INTEGER NOT NULL,
+    name VARCHAR(20) NOT NULL, 
+    uri VARCHAR(128) DEFAULT NULL
+);

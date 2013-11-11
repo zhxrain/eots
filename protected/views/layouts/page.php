@@ -26,7 +26,7 @@
     'items'=>array(
             array('label'=>'Dashboard', 'url'=>array('/site/dashboard')),
             array('label'=>'User', 'url'=>array('/account/index')),
-            array('label'=>'Role', 'url'=>array('/Role/index'))
+            array('label'=>'Role', 'url'=>array('/role/index'))
     ),
   )); ?>
 </div><!-- mainmenu -->
