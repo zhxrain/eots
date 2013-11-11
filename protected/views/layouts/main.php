@@ -82,72 +82,45 @@
   </div>
   <div class="pane ui-layout-west" id="nav-sidebar">
     <ul class="nav">
-      <li><a href="#">系统配置</a>
-          <ul>
-              <li><a href="#">状态</a></li>
-              <li><a href="#">快捷配置</a></li>
-              <li><a href="#">配置</a></li>
-              <li uri="account/index"><a href="#">管理员设置</a></li>
-              <li><a href="#">维护</a></li>
-              <li uri="Role/index"><a href="#">权限管理</a></li>
-          </ul>
-      </li>
-      <li><a href="#">网络管理</a>
-          <ul>
-              <li><a href="#">网络接口</a></li>
-              <li><a href="#">高可用性</a></li>
-          </ul>
-      </li>
-      <li><a href="#">访问控制</a>
-          <ul>
-              <li><a href="#">策略</a></li>
-              <li><a href="#">地址</a></li>
-              <li><a href="#">服务</a></li>
-              <li><a href="#">时间</a></li>
-              <li><a href="#">安全选项</a></li>
-          </ul>
-      </li>
-      <li><a href="#">应用防护</a>
-          <ul>
-              <li><a href="#">协议控制</a>
-                <ul>
-                    <li><a href="#">协议控制总策略</a></li>
-                    <li><a href="#">协议控制策略</a></li>
-                    <li><a href="#">协议控制内容</a></li>
-                </ul>
-              </li>
-              <li><a href="#">入侵防护</a></li>
-              <li><a href="#">Web应用防护</a></li>
-          </ul>
-      </li>
-      <li><a href="#">会话管理</a>
-          <ul>
-              <li><a href="#">会话控制</a></li>
-              <li><a href="#">会话统计</a></li>
-              <li><a href="#">会话状态</a></li>
-          </ul>
-      </li>
-      <li><a href="#">协议封装</a>
-          <ul>
-              <li><a href="#">封闭策略</a></li>
-          </ul>
-      </li>
-      <li><a href="#">统一认证</a>
-          <ul>
-              <li><a href="#">角色管理</a></li>
-          </ul>
-      </li>
-      <li><a href="#">状态监控</a>
-          <ul>
-              <li><a href="#">状态信息</a></li>
-          </ul>
-      </li>
-      <li><a href="#">日志</a>
-          <ul>
-              <li><a href="#">日志配置</a></li>
-              <li><a href="#">日志访问</a></li>
-          </ul>
-      </li>
+    <?php 
+      $level=1;
+      // FIXME(ZOwl): load menu depends on difference role.
+      $menu_items=MenuItem::model()->findAll(array('order'=>'id'));
+       
+      foreach($menu_items as $n=>$item)
+      {
+        if($item->level==$level)
+        {
+          echo CHtml::closeTag('li')."\n";
+        }
+        else if($item->level>$level)
+        {
+          echo CHtml::openTag('ul')."\n";
+        }
+        else
+        {
+          echo CHtml::closeTag('li')."\n";
+
+          for($i=$level-$item->level;$i;$i--)
+          {
+            echo CHtml::closeTag('ul')."\n";
+            echo CHtml::closeTag('li')."\n";
+          }
+        }
+
+        echo CHtml::openTag('li', array('uri'=>$item->uri));
+        echo CHtml::openTag('a', array('href'=>'#'));
+        echo CHtml::encode($item->title);
+        echo CHtml::closeTag('a')."\n";
+        $level=$item->level;
+      }
+       
+      for($i=$level;$i;$i--)
+      {
+        echo CHtml::closeTag('li')."\n";
+        echo CHtml::closeTag('ul')."\n";
+      }
+    ?>
     </ul>
   </div>
   <div class="pane ui-layout-center">

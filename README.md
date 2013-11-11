@@ -25,8 +25,9 @@ composer.phar install -vvv
 ### init database
 
 ```bash
-cd protected/data
-sqlite3 eots.db < schema.sqlite.sql
+cd protected
+sqlite3 ./db/eots.db < ./db/schema.sqlite.sql
+yiic migrate
 ```
 
 ### start server
