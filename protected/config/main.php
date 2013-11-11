@@ -20,15 +20,12 @@ return array(
   ),
 
   'modules'=>array(
-    // uncomment the following to enable the Gii tool
-                /*
-                'gii'=>array(
-                        'class'=>'system.gii.GiiModule',
-                        'password'=>'Enter Your Password Here',
-                        // If removed, Gii defaults to localhost only. Edit carefully to taste.
-                        'ipFilters'=>array('127.0.0.1','::1'),
-                ),
-                 */
+    'gii'=>array(
+      'class'=>'system.gii.GiiModule',
+      'password'=>'123456',
+      // If removed, Gii defaults to localhost only. Edit carefully to taste.
+      'ipFilters'=>array('127.0.0.1','::1'),
+    ),
     'user'=>array(
       'debug'=>true
     )
@@ -60,14 +57,8 @@ return array(
                 ),
                  */
     'db'=>array(
-      'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/eots.db',
+      'connectionString' => 'sqlite:'.dirname(__FILE__).'/../db/eots.db',
       'tablePrefix' => '',
-      // 'connectionString' => 'mysql:host=localhost;dbname=eots',
-      // 'emulatePrepare' => true,
-      // 'username' => 'root',
-      // 'password' => '',
-      // 'charset' => 'utf8',
-      // 'tablePrefix' => '',
     ),
     'errorHandler'=>array(
       // use 'site/error' action to display errors

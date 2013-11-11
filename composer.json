@@ -1,0 +1,34 @@
+{
+    "repositories"  : [
+        {
+            "type" : "composer",
+            "url" : "http://packages.phundament.com"
+        }, 
+        {
+            "type" : "composer",
+            "url" : "https://packagist.org"
+        }
+    ],
+
+    "require" : {
+        "php" : ">=5.4",
+        "yiisoft/yii": "1.1.*",
+        "yiiext/migrate-command" : "0.7.2",
+        "yiiext/nested-set-behavior" : "dev-master",
+        "psr/log" : "1.0.0"
+    },
+
+    "require-dev" : {
+        "phpunit/phpunit" : "*"
+    }, 
+
+    "autoload" : {
+        "classmap" : [
+            "protected/vendor/yiisoft/yii/framework/YiiBase.php", 
+            "protected/vendor/yiisoft/yii/framework/yii.php" ]
+    },
+
+    "config" : {
+        "vendor-dir" : "protected/vendor"
+    }
+}

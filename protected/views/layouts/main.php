@@ -45,7 +45,7 @@
 
                 var uri = li.attr('uri');
                 if(uri)
-                  $("#frame").attr("src", "/index.php?r=" + uri);
+                  $("#frame").attr("src", "index.php?r=" + uri);
               },
               onToggleBefore: function(submenu, opening) {
                 var idx = submenu.attr('data-index');
@@ -60,7 +60,7 @@
             });
             $('#container').layout({
                 closable: true
-              , resizeable: true
+              , resizable: true
               , north__resizable: false
               , north__spacing_open: 0
               , south__resizable: false
@@ -76,38 +76,56 @@
   <div class="pane ui-layout-north">Main Toolbar
     <div style="text-align:right;">
       <?php if(!Yii::app()->user->isGuest) { ?>
-      <?php echo Yii::app()->user->name; ?>(<a href="/index.php?r=site/logout">注销</a>)
+      <?php echo Yii::app()->user->name; ?>(<a href="index.php?r=site/logout">注销</a>)
       <?php } ?>
     </div>
   </div>
   <div class="pane ui-layout-west" id="nav-sidebar">
     <ul class="nav">
-      <li><a href="#">系统配置</a>
-          <ul>
-              <li uri="site/dashboard"><a href="#">主面板</a></li>
-              <li uri="account/index"><a href="#">用户管理</a></li>
-              <li uri="Role/index"><a href="#">权限管理</a></li>
-          </ul>
-      </li>
-      <li><a href="#">2. Menu2</a>
-          <ul>
-              <li><a href="#">2.1 Submenu</a></li>
-              <li><a href="#">2.2 Submenu</a></li>
-              <li><a href="#">2.3 Submenu</a></li>
-              <li><a href="#">2.4 Submenu</a>
-                <ul>
-                    <li><a href="#">2.4.1 Submenu</a></li>
-                    <li><a href="#">2.4.2 Submenu</a></li>
-                    <li><a href="#">2.4.3 Submenu</a></li>
-                </ul>
-              </li>
-          </ul>
-      </li>
+    <?php 
+      $level=1;
+      // FIXME(ZOwl): load menu depends on difference role.
+      $menu_items=MenuItem::model()->findAll(array('order'=>'id'));
+       
+      foreach($menu_items as $n=>$item)
+      {
+        if($item->level==$level)
+        {
+          echo CHtml::closeTag('li')."\n";
+        }
+        else if($item->level>$level)
+        {
+          echo CHtml::openTag('ul')."\n";
+        }
+        else
+        {
+          echo CHtml::closeTag('li')."\n";
+
+          for($i=$level-$item->level;$i;$i--)
+          {
+            echo CHtml::closeTag('ul')."\n";
+            echo CHtml::closeTag('li')."\n";
+          }
+        }
+
+        echo CHtml::openTag('li', array('uri'=>$item->uri));
+        echo CHtml::openTag('a', array('href'=>'#'));
+        echo CHtml::encode($item->title);
+        echo CHtml::closeTag('a')."\n";
+        $level=$item->level;
+      }
+       
+      for($i=$level;$i;$i--)
+      {
+        echo CHtml::closeTag('li')."\n";
+        echo CHtml::closeTag('ul')."\n";
+      }
+    ?>
     </ul>
   </div>
   <div class="pane ui-layout-center">
     <div class="container" id="page">
-      <iframe id="frame" src="/index.php?r=site/dashboard" width="100%" height="100%"></iframe>
+      <iframe id="frame" src="index.php?r=site/dashboard" width="100%" height="100%"></iframe>
     </div>
   </div>
   <div class="pane ui-layout-south">
