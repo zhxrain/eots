@@ -2,92 +2,92 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="en" />
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
+  <!-- blueprint CSS framework -->
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
+  <![endif]-->
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/navgoco/jquery.navgoco.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jq.layout/layout-default-latest.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jq.dropdown/jquery.dropdown.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/navgoco/jquery.navgoco.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jq.layout/layout-default-latest.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jq.dropdown/jquery.dropdown.css" media="screen" />
 
-        <?php
-          $cs=Yii::app()->clientScript;
-          $cs->registerCoreScript('jquery');
-          // $cs->registerCoreScript('jquery.ui');
-          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/navgoco/jquery.cookie.min.js');
-          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/navgoco/jquery.navgoco.min.js');
-          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.layout/jquery.layout-latest.min.js');
-          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.jqdock/jquery.jqdock.min.js');
-          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.dropdown/jquery.dropdown.min.js');
-        ?>
+  <?php
+    $cs=Yii::app()->clientScript;
+    $cs->registerCoreScript('jquery');
+    // $cs->registerCoreScript('jquery.ui');
+    $cs->registerScriptFile(Yii::app()->baseUrl . '/js/navgoco/jquery.cookie.min.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl . '/js/navgoco/jquery.navgoco.min.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.layout/jquery.layout-latest.min.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.jqdock/jquery.jqdock.min.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.dropdown/jquery.dropdown.min.js');
+  ?>
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+  <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-        <script type="text/javascript">
-          $(document).ready(function() {
-            $(".nav").navgoco({
-              accordion: true,
-              onClickBefore: function(e, submenu) {
-                console.log('Clicked on '+ (submenu === false ? 'leaf' : 'branch') + ' `'+$(this).text()+'`');
-              },
-              onClickAfter: function(e, submenu) {
-                e.preventDefault();
-                $('.nav').find('li').removeClass('active');
-                var li =  $(this).parent();
-                var lis = li.parents('li');
-                li.addClass('active');
-                lis.addClass('active');
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".nav").navgoco({
+        accordion: true,
+        onClickBefore: function(e, submenu) {
+          console.log('Clicked on '+ (submenu === false ? 'leaf' : 'branch') + ' `'+$(this).text()+'`');
+        },
+        onClickAfter: function(e, submenu) {
+          e.preventDefault();
+          $('.nav').find('li').removeClass('active');
+          var li =  $(this).parent();
+          var lis = li.parents('li');
+          li.addClass('active');
+          lis.addClass('active');
 
-                var uri = li.attr('uri');
-                if(uri)
-                  $("#frame").attr("src", "index.php?r=" + uri);
-              },
-              onToggleBefore: function(submenu, opening) {
-                var idx = submenu.attr('data-index');
-                var message = opening ? 'opening' : 'closing';
-                console.log('I am ' + message + ' menu ' + idx + ' just after this.');
-              },
-              onToggleAfter: function(submenu, opened) {
-                var idx = submenu.attr('data-index');
-                var message = opened ? 'opened' : 'closed';
-                console.log('I ' + message + ' menu ' + idx + ' just before this.');
-              }
-            });
-            contLayout = $('#container').layout({
-                closable: true
-              , resizable: true
-              , west__size: 180
-              , north__size: 80
-              , north__resizable: false
-              , north__spacing_open: 0
-              , south__resizable: false
-              , south__spacing_open: 0
-            });
-            contLayout.panes.north.layout({
-                closable: false
-              , west__size: 180
-              , west__resizable: false
-              , west__spacing_open: 0
-              , east__size: 180
-              , east__resizable: false
-              , east__spacing_open: 0
-            });
-          });
-        </script>
+          var uri = li.attr('uri');
+          if(uri)
+            $("#frame").attr("src", "index.php?r=" + uri);
+        },
+        onToggleBefore: function(submenu, opening) {
+          var idx = submenu.attr('data-index');
+          var message = opening ? 'opening' : 'closing';
+          console.log('I am ' + message + ' menu ' + idx + ' just after this.');
+        },
+        onToggleAfter: function(submenu, opened) {
+          var idx = submenu.attr('data-index');
+          var message = opened ? 'opened' : 'closed';
+          console.log('I ' + message + ' menu ' + idx + ' just before this.');
+        }
+      });
+      contLayout = $('#container').layout({
+          closable: true
+        , resizable: true
+        , west__size: 180
+        , north__size: 84 
+        , north__resizable: false
+        , north__spacing_open: 0
+        , south__resizable: false
+        , south__spacing_open: 0
+      });
+      contLayout.panes.north.layout({
+          closable: false
+        , west__size: 180
+        , west__resizable: false
+        , west__spacing_open: 0
+        , east__size: 180
+        , east__resizable: false
+        , east__spacing_open: 0
+      });
+    });
+  </script>
 </head>
 
 <body>
 
-<div id="container"  class="">
-  <div class="pane ui-layout-north">
+<div id="container">
+  <div class="header-bg pane ui-layout-north">
     <div class="ui-layout-west">
       <img src='images/logo.png'></img>
     </div>
