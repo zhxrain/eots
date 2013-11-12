@@ -19,7 +19,8 @@
     },
 
     "require-dev" : {
-        "phpunit/phpunit" : "*"
+        "phpunit/phpunit" : "*", 
+        "schmunk42/database-command" : "*"
     }, 
 
     "autoload" : {
