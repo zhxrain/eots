@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/navgoco/jquery.navgoco.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jq.layout/layout-default-latest.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jq.dropdown/jquery.dropdown.css" media="screen" />
 
         <?php
           $cs=Yii::app()->clientScript;
@@ -24,6 +25,8 @@
           $cs->registerScriptFile(Yii::app()->baseUrl . '/js/navgoco/jquery.cookie.min.js');
           $cs->registerScriptFile(Yii::app()->baseUrl . '/js/navgoco/jquery.navgoco.min.js');
           $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.layout/jquery.layout-latest.min.js');
+          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.jqdock/jquery.jqdock.min.js');
+          $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.dropdown/jquery.dropdown.min.js');
         ?>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -58,13 +61,24 @@
                 console.log('I ' + message + ' menu ' + idx + ' just before this.');
               }
             });
-            $('#container').layout({
+            contLayout = $('#container').layout({
                 closable: true
               , resizable: true
+              , west__size: 180
+              , north__size: 80
               , north__resizable: false
               , north__spacing_open: 0
               , south__resizable: false
               , south__spacing_open: 0
+            });
+            contLayout.panes.north.layout({
+                closable: false
+              , west__size: 180
+              , west__resizable: false
+              , west__spacing_open: 0
+              , east__size: 180
+              , east__resizable: false
+              , east__spacing_open: 0
             });
           });
         </script>
@@ -73,14 +87,29 @@
 <body>
 
 <div id="container"  class="">
-  <div class="pane ui-layout-north">Main Toolbar
-    <div style="text-align:right;">
-    <?php 
-      $user = Yii::app()->user;
-      if(!$user->isGuest) {
-        echo $user->name."(<a href=\"index.php?r=site/logout\">注销</a>)";
-      } 
-    ?>
+  <div class="pane ui-layout-north">
+    <div class="ui-layout-west">
+      <img src='images/logo.png'></img>
+    </div>
+    <div class="ui-layout-center" align="center" style="padding-top:30px;">
+      <ul id='dock-menu' class='jqDockAuto' data-jqdock-align='bottom' data-jqdock-labels='true'>
+        <li><a href='#' title='Favourites'><img src='images/uploads.png' alt='' /></a></li>
+        <li><a href='#' title='Pictures'><img src='images/uploads.png' alt='' /></a></li>
+        <li><a href='#' title='Music'><img src='images/uploads.png' alt='' /></a></li>
+        <li><a href='#' title='Videos'><img src='images/uploads.png' alt='' /></a></li>
+        <li><a href='#' title='Uploads'><img src='images/uploads.png' alt='' /></a></li>
+      </ul>
+    </div>
+    <div class="ui-layout-east" style="text-align:right;">
+      <div style="margin: 50px 10px 5px 0px;">
+        <?php 
+          $user = Yii::app()->user;
+          if(!$user->isGuest) {
+            echo "<span class=\"profile-btn\" data-dropdown=\"#dropdown-profile\">".$user->name."</span>(<a href=\"index.php?r=site/logout\">注销</a>)";
+          }
+        ?>
+        
+      </div>
     </div>
   </div>
   <div class="pane ui-layout-west" id="nav-sidebar">
@@ -143,6 +172,18 @@
     </div><!-- footer -->
   </div>
 </div><!-- page -->
+
+<div id="dropdown-profile" class="dropdown dropdown-tip has-icons dropdown-anchor-right">
+  <ul class="dropdown-menu">
+    <li class="undo"><a href="#">Undo</a></li>
+    <li class="redo"><a href="#">Redo</a></li>
+    <li class="dropdown-divider"></li>
+    <li class="cut"><a href="#">Cut</a></li>
+    <li class="copy"><a href="#">Copy</a></li>
+    <li class="paste"><a href="#">Paste</a></li>
+    <li class="delete"><a href="#">Delete</a></li>
+  </ul>
+</div>
 
 </body>
 </html>

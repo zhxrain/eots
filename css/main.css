@@ -83,3 +83,32 @@ div.flash-success a
 .pane {
   display:  none; /* will appear when layout inits */
 }
+
+.profile-btn {
+  color: #08C;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.profile-btn:after {
+  font-family: Consolas, Courier New, Arial, sans-serif;
+  content: '↓';
+  margin-left: 6px;
+  color: #08C;
+}
+
+.profile-btn:hover {
+  background: #F2F2F2;
+}
+
+.profile-btn.dropdown-open {
+  background: #888;
+  color: #FFF;
+}
+
+.profile-btn.dropdown-open:after {
+  color: #FFF;
+}
+
