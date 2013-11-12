@@ -2,6 +2,7 @@
 class User extends CActiveRecord
 {
   public $repeatpassword;
+
   public static function model($className=__CLASS__)
   {
     return parent::model($className);
@@ -11,6 +12,7 @@ class User extends CActiveRecord
   {
     return "users";
   }
+
   public function rules()
   {
     return array(

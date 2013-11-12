@@ -16,12 +16,24 @@ return array(
     'application.components.*',
     'application.modules.user.models.*', 
   ),
+  'modules'=>array(
+    'user'=>array(
+      'debug'=>true
+    )
+  ),
 
   // application components
   'components'=>array(
     'db'=>array(
       'connectionString' => 'sqlite:'.dirname(__FILE__).'/../db/eots.db',
       'tablePrefix' => '',
+    ),
+    'authManager'=>array(
+      'class' => 'CDbAuthManager',
+      'connectionID' => 'db',
+      'itemTable' => 'auth_item',
+      'itemChildTable' => 'auth_item_child',
+      'assignmentTable' => 'auth_assignment'
     ),
     'log'=>array(
       'class'=>'CLogRouter',
@@ -55,6 +67,9 @@ return array(
       'connectionID'=>'db',
       // alias of the template file used to create new migrations
       // 'templateFile'=>'application.db.migration_template',
+    ),
+    'database' => array(
+      'class' => 'applicatoin.vendor.schmunk42.database-command.EDatabaseCommand',
     ),
   ),
 );
