@@ -112,3 +112,8 @@ div.flash-success a
   color: #FFF;
 }
 
+.header-bg {
+  background-image: url(/images/bg.png);
+  background-repeat: repeat-x;
+}
+
