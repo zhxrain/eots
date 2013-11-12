@@ -75,18 +75,27 @@
 <div id="container"  class="">
   <div class="pane ui-layout-north">Main Toolbar
     <div style="text-align:right;">
-      <?php if(!Yii::app()->user->isGuest) { ?>
-      <?php echo Yii::app()->user->name; ?>(<a href="index.php?r=site/logout">注销</a>)
-      <?php } ?>
+    <?php 
+      $user = Yii::app()->user;
+      if(!$user->isGuest) {
+        echo $user->name."(<a href=\"index.php?r=site/logout\">注销</a>)";
+      } 
+    ?>
     </div>
   </div>
   <div class="pane ui-layout-west" id="nav-sidebar">
     <ul class="nav">
     <?php 
-      $level=1;
-      // FIXME(ZOwl): load menu depends on difference role.
-      $menu_items=MenuItem::model()->findAll(array('order'=>'id'));
+      $user = Yii::app()->user;
+      $auth=Yii::app()->authManager;
+      $roles=$auth->getRoles($user->id);
+      $menu_items=array();
+      foreach($roles as $n=>$role) {
+        $items=MenuItem::model()->with('roles')->findAll(array('condition'=>'roles.name="'.$role->getName().'"', 'order'=>'id'));
+        $menu_items=array_merge($menu_items, $items);
+      }
        
+      $level=1;
       foreach($menu_items as $n=>$item)
       {
         if($item->level==$level)
