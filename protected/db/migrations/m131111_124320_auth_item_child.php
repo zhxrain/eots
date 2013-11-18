@@ -7,7 +7,7 @@
       'parent' => 'varchar(20) NOT NULL', 
       'child' => 'varchar(20) NOT NULL'
     ));
-    $this->insert('auth_item_child', array('parent'=>'Administrators', 'child'=>'showRules'));
+    $this->insert('auth_item_child', array('parent'=>'Administrators', 'child'=>'showRoles'));
     $this->insert('auth_item_child', array('parent'=>'Administrators', 'child'=>'showUsers'));
   }
 
