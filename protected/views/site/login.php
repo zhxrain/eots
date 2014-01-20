@@ -29,7 +29,7 @@
         <input type="password" name="password" placeholder="口令" required="" id="password" />
       </div>
       <div id="rememberMe">
-        <input type="checkbox" name="rememberMe" value=1/>记住我?
+        <input type="checkbox" name="rememberMe" value=1 />记住我?
       </div>
       <div>
         <input type="submit" value="登陆" />

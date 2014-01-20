@@ -68,8 +68,18 @@ return array(
       'class'=>'CLogRouter',
       'routes'=>array(
         array(
-          'class'=>'CFileLogRoute',
-          'levels'=>'error, warning',
+          'class'=>'CWebLogRoute',
+          // I include *trace* for the
+          // sake of the example, you can include
+          // more levels separated by commas
+          'levels'=>'trace',
+          //
+          // I include *vardump* but you
+          // can include more separated by commas
+          'categories'=>'vardump',
+          //
+          // This is self-explanatory right?
+          'showInFireBug'=>true
         ),
         // uncomment the following to show log messages on web pages
                                 /*
@@ -100,7 +110,7 @@ return array(
   'language'=>'zh_cn', 
   'behaviors' => array(
     'onBeginRequest' => array(
-        'class' => 'application.components.RequireLogin'
+      'class' => 'application.components.RequireLogin'
     )
   ),
 );
