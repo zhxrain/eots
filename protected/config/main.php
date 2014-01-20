@@ -68,6 +68,10 @@ return array(
       'class'=>'CLogRouter',
       'routes'=>array(
         array(
+          'class'=>'CFileLogRoute',
+          'levels'=>'error, warning',
+        ),
+        array(
           'class'=>'CWebLogRoute',
           // I include *trace* for the
           // sake of the example, you can include
@@ -81,12 +85,6 @@ return array(
           // This is self-explanatory right?
           'showInFireBug'=>true
         ),
-        // uncomment the following to show log messages on web pages
-                                /*
-                                array(
-                                        'class'=>'CWebLogRoute',
-                                ),
-                                 */
       ),
     ),
     'cache'=>array(
@@ -110,7 +108,7 @@ return array(
   'language'=>'zh_cn', 
   'behaviors' => array(
     'onBeginRequest' => array(
-      'class' => 'application.components.RequireLogin'
+        'class' => 'application.components.RequireLogin'
     )
   ),
 );
