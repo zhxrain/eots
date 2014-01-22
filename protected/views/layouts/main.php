@@ -27,6 +27,7 @@
     $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.layout/jquery.layout-latest.min.js');
     $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.jqdock/jquery.jqdock.min.js');
     $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jq.dropdown/jquery.dropdown.min.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap/bootstrap.min.js');
   ?>
 
   <title><?php echo CHtml::encode($this->pageTitle); ?></title>
