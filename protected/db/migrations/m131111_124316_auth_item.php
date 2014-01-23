@@ -12,6 +12,7 @@ class m131111_124316_auth_item extends EDbMigration
       'data' => 'varchar(100) DEFAULT NULL'
     ));
     $this->insert('auth_item', array('name'=>'Administrators', 'type'=>2));
+    $this->insert('auth_item', array('name'=>'Guest', 'type'=>2));
     $this->insert('auth_item', array('name'=>'showRoles', 'type'=>0, 'description'=>'show roles'));
     $this->insert('auth_item', array('name'=>'showUsers', 'type'=>0, 'description'=>'show users'));
   }

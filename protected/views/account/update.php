@@ -1,43 +1,33 @@
 <h2><?php echo 'Update User'; ?></h2>
 
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-  'id'=>'user-form',
-  'enableClientValidation'=>true,
-  'clientOptions'=>array(
-    'validateOnSubmit'=>true,
-  )
-)); ?>
-
-<?php echo $form->errorSummary($model); ?>
-
-<div class="row">
-  <?php echo $form->labelEx($model, 'Username'); ?>
-  <?php echo $form->textField($model, 'username', array('readonly'=>true)); ?>
-</div>
-
-<div class="row">
-  <?php echo $form->labelEx($model, 'Password'); ?>
-  <?php echo $form->passwordField($model, 'password'); ?>
-</div>
-
-<div class="row">
-  <?php echo $form->labelEx($model, 'Password again'); ?>
-  <?php echo $form->passwordField($model, 'repeatpassword'); ?>
-</div>
-
-<div class="row">
-  <?php echo $form->labelEx($model, 'Email'); ?>
-  <?php echo $form->textField($model, 'email'); ?>
-</div>
-
-<div class="row buttons">
-  <?php echo CHtml::submitButton('Submit'); ?>
-  <?php echo CHtml::button('Cancel',array('submit'=>array('account/index'))); ?>
-</div>
-
-</div>
-
-
-<?php $this->endWidget(); ?>
+<form class="form-horizontal" role="form" action="/index.php?r=account/update&id=<?= $model->id?>" method="post">
+  <div class="form-group">
+    <label for="inputText" class="col-sm-2 control-label">Username</label>
+    <div class="col-sm-4">
+    <input type="text" class="form-control" id="inputText" name="username" placeholder="Username" value="<?php echo $model->username?>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="<?= $model->password?>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-sm-2 control-label">Password again</label>
+    <div class="col-sm-4">
+    <input type="password" class="form-control" id="inputPassword1" name="repeatpassword" placeholder="Password again" value="<?= $model->password?>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-4">
+    <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" value="<?php echo $model->email?>">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+</form>

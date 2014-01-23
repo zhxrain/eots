@@ -65,9 +65,14 @@ class AccountController extends Controller
   {
     $this->layout = 'page';
     $user=User::model()->findByPk($id);
-    if(isset($_POST['User']))
+    $auth=Yii::app()->authManager;
+    $roles=$auth->roles;
+    if(isset($_POST['username']))
     {
-      $user->attributes = $_POST['User'];
+      $user->username= $_POST['username'];
+      $user->password= $_POST['password'];
+      $user->repeatpassword= $_POST['repeatpassword'];
+      $user->email= $_POST['email'];
       if($user->validate() && $user->save())
         $this->redirect(array("/account/index"));
     }

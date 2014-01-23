@@ -163,7 +163,7 @@
     </ul>
   </div>
   <div class="pane ui-layout-center">
-    <div class="container" id="page">
+    <div class="container">
       <iframe id="frame" src="index.php?r=site/dashboard" width="100%" height="100%"></iframe>
     </div>
   </div>
