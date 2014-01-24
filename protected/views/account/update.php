@@ -4,7 +4,7 @@
   <div class="form-group">
     <label for="inputText" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-4">
-    <input type="text" class="form-control" id="inputText" name="username" placeholder="Username" value="<?php echo $model->username?>">
+    <p class="form-control-static"><?= $model->username?></p>
     </div>
   </div>
   <div class="form-group">
@@ -26,6 +26,21 @@
     </div>
   </div>
   <div class="form-group">
+    <label for="roleSelect" class="col-sm-2 control-label">Role</label>
+    <div class="col-sm-4">
+    <select class="form-control" id="roleSelect" name="role">
+    <?php
+       foreach ($roles as $key => $value){
+         if($key == key($role))
+           echo ' <option value="'.$key.'" selected="selected">'.$key.'</option>';
+         else
+           echo ' <option value="'.$key.'">'.$key.'</option>';
+       }
+    ?>
+    </select>
+    </div>
+  </div>
+    <div class="form-group">
     <div class="col-sm-offset-2 col-sm-4">
       <button type="submit" class="btn btn-default">Submit</button>
     </div>

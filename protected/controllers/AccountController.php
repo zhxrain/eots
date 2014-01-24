@@ -67,17 +67,23 @@ class AccountController extends Controller
     $user=User::model()->findByPk($id);
     $auth=Yii::app()->authManager;
     $roles=$auth->roles;
-    if(isset($_POST['username']))
+    $role=$auth->getRoles($user->username);
+    if(isset($_POST['role']))
     {
-      $user->username= $_POST['username'];
       $user->password= $_POST['password'];
       $user->repeatpassword= $_POST['repeatpassword'];
       $user->email= $_POST['email'];
+      $auth->revoke(key($role), $user->username);
+      $auth->assign($_POST['role'], $user->username);
       if($user->validate() && $user->save())
         $this->redirect(array("/account/index"));
     }
     $user->repeatpassword = $user->password;
-    $this->render("/account/update", array('model'=>$user));
+    $this->render("/account/update", array(
+      'model'=>$user,
+      'roles'=>$roles,
+      'role'=>$role
+    ));
   }
 }
 

@@ -12,6 +12,7 @@ class m131111_124346_auth_assignment extends EDbMigration
       'data' => 'varchar(100) DEFAULT NULL'
     ));
     $this->insert('auth_assignment', array('userid'=>'admin', 'itemname'=>'Administrators'));
+    $this->insert('auth_assignment', array('userid'=>'user0', 'itemname'=>'Guest'));
   }
 
   public function safeDown()

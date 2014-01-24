@@ -76,8 +76,8 @@
           closable: false
         , west__size: 180
         , west__resizable: false
-        , west__spacing_open: 0
         , east__size: 180
+        , west__spacing_open: 0
         , east__resizable: false
         , east__spacing_open: 0
       });
@@ -163,7 +163,7 @@
     </ul>
   </div>
   <div class="pane ui-layout-center">
-    <div class="container">
+    <div class="container" id="page">
       <iframe id="frame" src="index.php?r=site/dashboard" width="100%" height="100%"></iframe>
     </div>
   </div>
